@@ -41,9 +41,14 @@ const OnboardingOverlay = () => {
 ````js
 const OnboardingOne = ({ navigator }) => {
     return (
-        <TouchableOpacity onPress={() => navigator.push("OnboardingTwo")}>
+        <>
+            <TouchableOpacity onPress={() => navigator.push("OnboardingTwo")}>
                 <View />
-        <TouhableOpacity>
+            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigator.pop()}>
+                <View />
+            <TouchableOpacity>
+        </>
     );
 }
 ````
