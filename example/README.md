@@ -3,7 +3,7 @@
 ## Getting Started
 
 ```bash
-yarn
+yarn or npm install
 ```
 
 for iOS:
@@ -15,11 +15,11 @@ npx pod-install
 To run the app use:
 
 ```bash
-yarn ios
+yarn ios or npx react-native run-ios
 ```
 
 or
 
 ```bash
-yarn android
+yarn android or npx react-native run-android
 ```
