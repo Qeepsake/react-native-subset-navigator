@@ -44,6 +44,7 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/react": "^17.0.0",
     "@types/react-native": "^0.63.46",
+    "all-contributors-cli": "^6.20.0",
     "eslint": "^7.19.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "metro-react-native-babel-preset": "^0.65.0",
