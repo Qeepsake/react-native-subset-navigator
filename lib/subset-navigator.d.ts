@@ -1,5 +1,5 @@
 import * as React from 'react';
-declare type Pages = Record<string, React.ComponentType<ScreenProps>>;
+export declare type Pages = Record<string, React.ComponentType<ScreenProps>>;
 interface ScreenProps {
     navigator: React.Component;
 }
