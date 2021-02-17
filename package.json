@@ -1,6 +1,6 @@
 {
   "name": "react-native-subset-navigator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An in-built navigator to simplify embedded navigation flows.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
