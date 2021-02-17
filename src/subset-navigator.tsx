@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-type Pages = Record<string, React.ComponentType<ScreenProps>>
+export type Pages = Record<string, React.ComponentType<ScreenProps>>
 type Screens = Record<string, React.ReactElement<ScreenProps>>
 
 interface IState {
@@ -24,7 +24,6 @@ class SubsetNavigator {
     class Navigator extends React.Component<IProps, IState> {
       constructor(props: IProps) {
         super(props)
-        // const { nameOfFirstPage, pages } = props
 
         // Initialising the screens to use this component as its navigator
         let newScreens: Screens = {}

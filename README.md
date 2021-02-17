@@ -17,6 +17,7 @@ or
 ## Usage
 
 1. Create the Subset Navigator
+`createSubsetNavigator(nameOfFirstOverlay, Overlays)`
 
 ````js
 import { createSubsetNavigator } from "react-native-subset-navigator";
@@ -29,7 +30,7 @@ const OnboardingOverlay = () => {
         })
 
     return (
-        <View style={{}}> <-- modal common container
+        <View style={{}}> // <-- modal common container
             <OverlaySubset />
         </View> 
     );
