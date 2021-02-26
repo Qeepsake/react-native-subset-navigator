@@ -13,24 +13,26 @@ interface IState {
 interface IProps {
   nameOfFirstPage: string
   pages: Pages
+  passProps?: any
 }
 
 interface ScreenProps {
   navigator: Navigator
+  passProps?: any
 }
 
 export class Navigator extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props)
 
-    const { pages, nameOfFirstPage } = props
+    const { pages, nameOfFirstPage, passProps } = props
     // Initialising the screens to use this component as its navigator
     let newScreens: Screens = {}
     const screenNames = Object.keys(pages)
     for (let i = 0; i < screenNames.length; i++) {
       let screenName: string = screenNames[i]
       let Screen = pages[screenName]
-      newScreens[screenName] = <Screen navigator={this} />
+      newScreens[screenName] = <Screen navigator={this} {...passProps} />
     }
 
     // Component state
@@ -85,9 +87,16 @@ export class Navigator extends React.Component<IProps, IState> {
 class SubsetNavigator {
   static createSubsetNavigator(
     nameOfFirstPage: string,
-    pages: Pages
+    pages: Pages,
+    passProps?: any
   ): React.ReactElement<Navigator> {
-    return <Navigator nameOfFirstPage={nameOfFirstPage} pages={pages} />
+    return (
+      <Navigator
+        nameOfFirstPage={nameOfFirstPage}
+        pages={pages}
+        passProps={passProps}
+      />
+    )
   }
 }
 

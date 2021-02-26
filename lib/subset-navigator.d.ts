@@ -10,9 +10,11 @@ interface IState {
 interface IProps {
     nameOfFirstPage: string;
     pages: Pages;
+    passProps?: any;
 }
 interface ScreenProps {
     navigator: Navigator;
+    passProps?: any;
 }
 export declare class Navigator extends React.Component<IProps, IState> {
     constructor(props: IProps);
@@ -21,7 +23,7 @@ export declare class Navigator extends React.Component<IProps, IState> {
     render(): JSX.Element;
 }
 declare class SubsetNavigator {
-    static createSubsetNavigator(nameOfFirstPage: string, pages: Pages): React.ReactElement<Navigator>;
+    static createSubsetNavigator(nameOfFirstPage: string, pages: Pages, passProps?: any): React.ReactElement<Navigator>;
 }
 export default SubsetNavigator;
 export declare const createSubsetNavigator: typeof SubsetNavigator.createSubsetNavigator;
