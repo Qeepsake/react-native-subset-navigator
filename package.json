@@ -49,11 +49,11 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "metro-react-native-babel-preset": "^0.65.0",
     "react": "^17.0.1",
-    "react-native": "^0.63.4",
+    "react-native": "^0.63.2",
     "typescript": "^4.1.3"
   },
   "peerDependencies": {
-    "react": "^17.0.1",
+    "react": "^16.13.1",
     "react-native": "*"
   },
   "np": {
