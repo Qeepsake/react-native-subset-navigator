@@ -31,7 +31,7 @@ const OnboardingOverlay = () => {
 
     return (
         <View style={{}}> // <-- modal common container
-            <OverlaySubset />
+            {OverlaySubset}
         </View> 
     );
 }
