@@ -76,6 +76,57 @@ const OnboardingOne = ({ navigator, passProps }) => {
 }
 ````
 
+### Animations
+We can now add animations when switching between screens in the subset navigator.
+
+Example
+````js
+import { Animated, ... } from 'react-native' <-- import Animated from react-native
+import {
+  Navigator,
+  useFadeInAnimation,
+  useSlideRightAnimation,
+} from 'react-native-subset-navigator' <-- import the animations you want
+
+
+const OnboardingOne = ({ navigator, passProps }) => {
+    // Use animations like so
+    const animatedOpacity = useFadeInAnimation()
+    const slideRightAnimation = useSlideRightAnimation()
+
+    return (
+    // Use Animated
+    <Animated.View style={[animatedOpacity, slideRightAnimation]}>
+        <TouchableOpacity onPress={() => navigator.push("OnboardingTwo")}>
+            <View />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigator.pop()}>
+            <View />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => passProps.setPageNumber(2)}>
+            <View />
+        </TouchableOpacity>
+    </Animated.View>
+    );
+}
+````
+
+#### Available types 
+Available animations:
+- `useFadeInAnimation(finalOpacity, duration)`: for fade in animation
+- `useSlideLeftAnimation(duration, easing)`: for slide left animation
+- `useSlideRightAnimation(duration, easing)`: for slide right animation
+- `useSlideUpAnimation(duration, easing)`: for slide up animation
+
+The params below are used to configure the animations (if applicable).
+
+| Param        | Type          | Optional  | Default | Description                                                                             |
+| ------------ | ------------- | --------- | ------- | --------------------------------------------------------------------------------------- |
+| finalOpacity | number         | Yes      | 1      | Opacity at the end of the animation. 1 is completely opaque.                             |
+| duration     | number         | Yes      | 500    | Time in milliseconds to execute the animation.                                           |
+| easing       | ((value: number) => number)| Yes | Easing.quad | The easing function for the animation. You can specify your own or use the standard functions from React Native's Easing module.              |
+
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
