@@ -81,12 +81,11 @@ We can now add animations when switching between screens in the subset navigator
 
 Example
 ````js
-import { Animated, ... } from 'react-native' <-- import Animated from react-native
+import { Animated, ... } from 'react-native' //<-- import Animated from react-native
 import {
-  Navigator,
   useFadeInAnimation,
   useSlideRightAnimation,
-} from 'react-native-subset-navigator' <-- import the animations you want
+} from 'react-native-subset-navigator' //<-- import the animations you want
 
 
 const OnboardingOne = ({ navigator, passProps }) => {
