@@ -1,12 +1,11 @@
 import * as React from 'react'
 
 export type Pages = Record<string, React.ComponentType<ScreenProps>>
-type Screens = Record<string, React.ReactElement<ScreenProps>>
 
 interface IState {
-  screens: Screens
+  pages: Pages
   currentScreen: React.ReactElement<ScreenProps>
-  screenStack: string[]
+  screenStack: React.ReactElement<ScreenProps>[]
   stackSize: number
 }
 
@@ -26,20 +25,15 @@ export class Navigator extends React.Component<IProps, IState> {
     super(props)
 
     const { pages, nameOfFirstPage, passProps } = props
-    // Initialising the screens to use this component as its navigator
-    let newScreens: Screens = {}
-    const screenNames = Object.keys(pages)
-    for (let i = 0; i < screenNames.length; i++) {
-      let screenName: string = screenNames[i]
-      let Screen = pages[screenName]
-      newScreens[screenName] = <Screen navigator={this} {...passProps} />
-    }
+
+    const FirstScreenComponent = pages[nameOfFirstPage]
+    const firstScreen = <FirstScreenComponent navigator={this} {...passProps} />
 
     // Component state
     this.state = {
-      screens: newScreens, // All the screens
-      currentScreen: newScreens[nameOfFirstPage],
-      screenStack: [nameOfFirstPage],
+      pages: pages,
+      currentScreen: firstScreen,
+      screenStack: [firstScreen],
       stackSize: 1,
     }
 
@@ -50,13 +44,13 @@ export class Navigator extends React.Component<IProps, IState> {
   pop() {
     this.setState((state) => {
       let newStackSize = state.stackSize - 1
-      let newScreenName = state.screenStack[newStackSize - 1] // Index
+      let newScreen = state.screenStack[newStackSize - 1] // Index
       let newScreenStack = state.screenStack
       if (state.stackSize > 1) {
         newScreenStack.pop()
         return {
           ...state,
-          currentScreen: state.screens[newScreenName],
+          currentScreen: newScreen,
           screenStack: newScreenStack,
           stackSize: newStackSize,
         }
@@ -66,12 +60,14 @@ export class Navigator extends React.Component<IProps, IState> {
     })
   }
 
-  push(screenName: string) {
+  push(screenName: string, props: any) {
     this.setState((state) => {
       let newScreenStack = state.screenStack
-      newScreenStack.push(screenName)
+
+      let Screen = state.pages[screenName]
+      newScreenStack.push(<Screen navigator={this} passProps={props} />)
       return {
-        currentScreen: state.screens[screenName],
+        currentScreen: newScreenStack[state.stackSize],
         screenStack: newScreenStack,
         stackSize: state.stackSize + 1,
       }
