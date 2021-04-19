@@ -60,7 +60,7 @@ export class Navigator extends React.Component<IProps, IState> {
     })
   }
 
-  push(screenName: string, props: any) {
+  push(screenName: string, props?: any) {
     this.setState((state) => {
       let newScreenStack = state.screenStack
 

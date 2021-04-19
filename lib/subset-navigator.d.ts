@@ -18,7 +18,7 @@ interface ScreenProps {
 export declare class Navigator extends React.Component<IProps, IState> {
     constructor(props: IProps);
     pop(): void;
-    push(screenName: string, props: any): void;
+    push(screenName: string, props?: any): void;
     render(): JSX.Element;
 }
 declare class SubsetNavigator {
