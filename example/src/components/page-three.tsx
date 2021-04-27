@@ -17,14 +17,14 @@ export const PageThree: React.FC<Props> = (props: Props) => {
   return (
     <Animated.View style={slideUpAnimation}>
       <Text style={{ fontSize: 40, marginBottom: 240 }}>ITS PAGE THREE!</Text>
-      <Button
-        onPress={() => {
-          passProps?.setPageNumber(1)
-          navigator.push('PageOne')
-        }}
-        title='PUSH TO PAGE ONE!'
-      />
+      <Button onPress={onButtonPress} title='PUSH TO PAGE ONE!' />
       <Button onPress={() => navigator.pop()} title='POP!' />
     </Animated.View>
   )
+  function onButtonPress() {
+    passProps.setPageNumber(1)
+    navigator.push('PageOne', {
+      setPageNumber: passProps.setPageNumber,
+    })
+  }
 }

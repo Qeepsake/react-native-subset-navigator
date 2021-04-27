@@ -1,10 +1,9 @@
 import * as React from 'react';
 export declare type Pages = Record<string, React.ComponentType<ScreenProps>>;
-declare type Screens = Record<string, React.ReactElement<ScreenProps>>;
 interface IState {
-    screens: Screens;
+    pages: Pages;
     currentScreen: React.ReactElement<ScreenProps>;
-    screenStack: string[];
+    screenStack: React.ReactElement<ScreenProps>[];
     stackSize: number;
 }
 interface IProps {
@@ -19,7 +18,7 @@ interface ScreenProps {
 export declare class Navigator extends React.Component<IProps, IState> {
     constructor(props: IProps);
     pop(): void;
-    push(screenName: string): void;
+    push(screenName: string, props?: any): void;
     render(): JSX.Element;
 }
 declare class SubsetNavigator {

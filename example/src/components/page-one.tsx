@@ -20,14 +20,14 @@ export const PageOne: React.FC<Props> = (props: Props) => {
   return (
     <Animated.View style={[animatedOpacity, slideRightAnimation]}>
       <Text style={{ fontSize: 40, marginBottom: 240 }}>ITS PAGE ONE!</Text>
-      <Button
-        onPress={() => {
-          passProps?.setPageNumber(2)
-          navigator.push('PageTwo')
-        }}
-        title='PUSH TO PAGE TWO!'
-      />
+      <Button onPress={onButtonPress} title='PUSH TO PAGE TWO!' />
       <Button onPress={() => navigator.pop()} title='POP!' />
     </Animated.View>
   )
+  function onButtonPress() {
+    passProps.setPageNumber(2)
+    navigator.push('PageTwo', {
+      setPageNumber: passProps.setPageNumber,
+    })
+  }
 }
