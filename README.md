@@ -22,7 +22,7 @@ or
 ````js
 import { createSubsetNavigator } from "react-native-subset-navigator";
 
- //props is optional
+ // props are optional 
 const OnboardingOverlay = (props) => {
         const OverlaySubset = createSubsetNavigator("OnboardingOne", {
           "OnboardingOne": OnboardingOne,
@@ -40,7 +40,7 @@ const OnboardingOverlay = (props) => {
 ````
 
 2. Render the subset navigator
-- The `passProps` props passes props to every screen of the subset navigator 
+- The `passProps` props passes props to the first screen of the subset navigator 
 
 ````js
 import {OnboardingOverlay} from '../components/on-boarding-overlay';
@@ -50,6 +50,7 @@ export const OnBoardingPage = () => {
 
     return(
       ...
+      // These props will only be passed to the first screen/component
       <OnboardingOverlay passProps={{setPageNumber}} />
       ...
     )
@@ -57,20 +58,25 @@ export const OnBoardingPage = () => {
 ````
 
 3. Create the components/ screens to take in a 'navigator' prop and use the `push` and `pop` methods to navigate.
-- The component can also take in a 'passProps' prop if you want to pass props to each screen
+- Pass props to subsequent screens/ components with the second parameter of the `push` method. These props can also be accessed by the `passProps` prop
+
 ````js
 const OnboardingOne = ({ navigator, passProps }) => {
     return (
         <>
-            <TouchableOpacity onPress={() => navigator.push("OnboardingTwo")}>
+            <TouchableOpacity onPress={() => {
+                navigator.push("OnboardingTwo", {
+                setPageNumber: passProps.setPageNumber,
+                })}
+            }>
                 <View />
-            <TouchableOpacity>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => navigator.pop()}>
                 <View />
-            <TouchableOpacity>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => passProps.setPageNumber(2)}>
                 <View />
-            <TouchableOpacity>
+            </TouchableOpacity>
         </>
     );
 }
