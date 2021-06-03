@@ -14,7 +14,7 @@
     "allowJs": true,
     "moduleResolution": "node",
   },
-  "exclude": ["**/__tests__/*"],
+  "exclude": ["**/__tests__/*", "node_modules"],
   "include": ["src"],
   "paths": {
     "react-native-subset-navigator": ["../src"]
